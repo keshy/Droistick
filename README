@@ -1,0 +1,22 @@
+This application consists of 2 parts.
+
+1. Android client application ; This would be responsible for tapping into the phone's sensors to pick up data for movement of the paddles.
+   A simple SensorListener implementation is provided to obtain raw sensor data and perform mathematical manipulation to determine
+   the direction of movement of the phone. 
+   Based on intensive testing we have the following results:
+   a. The app works best if the phone is held along its longer edge i.e. in the landscape view and then flipped in a clockwise direction
+      front and back.
+   b. Best results were observed for the Nexus series of phones due to better accelerometer sensitivity. Not so great results were observed 
+      for the Droid series. 
+   c. Would require fast wifi. In order to refine this product we'd have to make a few architectural changes one of them being the dependency 
+      on using internet for transfering real time motion control and also inducing another DB layer to save this data. (this is ongoing work).
+   d. Can be imported into Palm devices as well. The sensors on the Palm Pre phones were found the respond better than any other android phone.
+
+2. Server: 
+   We used the facebook platform to provide a callback to our server enabling us to host the game in the facebook application page. 
+   Our server is powered by php scripts taking care of adding and retrieving motion events from the DB. 
+
+   We hacked a paddle game we found online which was primarily javascript. We stripped out the keyboard and mouse controls and provided
+   an interface to our php scripts which would retrieve the data to determine the most recent motion event.
+
+   
